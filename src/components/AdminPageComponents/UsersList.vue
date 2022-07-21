@@ -16,6 +16,9 @@
         <li v-for="user in users" :key="user">
         {{ user.email }}
         </li>
+        <ul v-for="user in users" :key="user.id">
+        <li v-for="user in even(users)" :key="user">{{ user.email}} {{user.id}}</li>
+      </ul>
         <div v-for="user in users"
         :key="user.id">
         <UserItem v-if="user.id ===1"
@@ -60,6 +63,9 @@ export default defineComponent({
     this.login();
   },
   methods: {
+    even(users) {
+      return users.filter((user) => user.id === 1);
+    },
     showUserItem(user) {
       console.log('UserAAAAAAAAAAAAAAAAAAAAAAAAAAAA', user.id);
       console.log('UserAAAAAAAAAAAAAAAAAAAAAAAAAAAA', user.length);
